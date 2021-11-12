@@ -9,6 +9,11 @@ import random
 
 
 class VehicleRegistry:
+	"""
+	Dev Notes:
+		- Add a constructor method, defining the following attributes: lenght, id, vehicle license. This are the attributes of the vehicle.
+		- Then decouple all methods.
+	"""
 	def generate_vehicle_id(self, lenght) -> str:
         	return ''.join(random.choices(string.ascii_uppercase, k=lenght))
 
@@ -19,6 +24,7 @@ class VehicleRegistry:
 class Application:
 	def register_vehicle(self, brand: str) -> None:
 		# Creates a registry instance
+		# TODO: Remove this coupling between Application and VehicleRegistry
 		registry: VehicleRegistry = VehicleRegistry()
 		
 		# Creates a vehicle id of lenght 12
@@ -29,6 +35,10 @@ class Application:
 		license_plate: str = registry.generate_vehicle_license(vehicle_id)
 
 		# Computes the catalogue price
+		# TODO: Remove Coupling between data
+		#  catalogue_price and brands...
+		#  Data it is not stored logically, 
+		#  they need to be detached from each other
 		catalogue_price: int = 0
 		if brand == "Tesla Model 3":
 		    catalogue_price = 60000
@@ -40,6 +50,8 @@ class Application:
 		# Computes the tax percentage (default 5% og the catalogue price,
 		# except for eletric cars, where it is 2%)
 		tax_percentage: float = 0.05
+		# TODO: Remove coupling between specific brands of electric car
+		#  and information
 		if brand == "Tesla Model 3" or brand == "Volkswagen ID3":
 			tax_percentage = 0.02
 
