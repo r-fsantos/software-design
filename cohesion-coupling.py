@@ -8,6 +8,20 @@ import string
 import random
 
 
+class VehicleInfo:
+	def __init__(self):
+		self.brand: str = ''
+		self.catalog_price: int = 0
+		self.electric: bool = Fase
+
+
+class Vehicle:
+	def __init__(self):
+		self.id: str = ''
+		self.license_plate: str = ''
+		self.info: VehicleInfo = VehicleInfo()
+
+
 class VehicleRegistry:
 	"""
 	Dev Notes:
@@ -52,6 +66,7 @@ class Application:
 		tax_percentage: float = 0.05
 		# TODO: Remove coupling between specific brands of electric car
 		#  and information
+		# TODO: Group information by their "Domain" their type, class, behaviour
 		if brand == "Tesla Model 3" or brand == "Volkswagen ID3":
 			tax_percentage = 0.02
 
