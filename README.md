@@ -18,4 +18,4 @@ That's all for now, folks. Enjoy it.
 ### Topics
 
 1. [Cohesion and Coupling](https://github.com/r-fsantos/software-design/tree/master/0-Cohesion-Coupling) (Add also a TIL about it and some Notion link with more detail about it)
-
+2. [Dependency Inversion (SOLID)](https://github.com/r-fsantos/software-design/tree/master/1-dependency-inversion) (Add also a TIL about it and some Notion link with more detail about it)
