@@ -47,7 +47,7 @@ class VehicleRegistry:
 		self.add_vehicle_info(brand="Tesla Model Y", catalogue_price=5000, electric=True)
 
 	def add_vehicle_info(self, brand: string, catalogue_price: int, electric: bool) -> None:
-		self.vehicle_info[brand]: VehicleInfo = VehicleInfo(brand=brand, catalogue_price=catalogue_price, electric=electric)
+		self.vehicle_info[brand] = VehicleInfo(brand=brand, catalogue_price=catalogue_price, electric=electric)
 
 	def generate_vehicle_id(self, lenght) -> str:
         	return ''.join(random.choices(string.ascii_uppercase, k=lenght))
@@ -64,14 +64,14 @@ class VehicleRegistry:
 			vehicle_info=self.vehicle_info[brand]
 		)
 
-class Application:
+class VehicleRegistrationUseCase:
+	def __init__(self, vehicle_registry: VehicleRegistry()) -> None:
+		self.registry: VehicleRegistry = vehicle_registry
+
 	def register_vehicle(self, brand: str) -> Vehicle:
-		registry: VehicleRegistry = VehicleRegistry()
-		
-		return registry.create_vehicle(brand)
+		return self.registry.create_vehicle(brand)
 
-
-app = Application()
+vehicle_registry: VehicleRegistry() = VehicleRegistry()
+app = VehicleRegistrationUseCase(vehicle_registry=vehicle_registry)
 vehicle: Vehicle = app.register_vehicle("BMW 5")
 vehicle.print()
-
