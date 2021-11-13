@@ -18,7 +18,7 @@ class Switchable(ABC):
 		pass
 
 
-class LightBulb:
+class LightBulb(Switchable):
 	def __init__(self) -> None:
 		pass
 
@@ -30,22 +30,22 @@ class LightBulb:
 
 
 class ElectricPowerSwitch:
-	def __init__(self, light_bulb: LightBulb) -> None:
-		self.light_bulb: LightBulb = light_bulb
+	def __init__(self, switchable: Switchable) -> None:
+		self.switchable: Switchable = switchable
 		self.on: bool = False
 
 	def press(self) -> None:
 		if self.on:
-			self.light_bulb.turn_off()
+			self.switchable.turn_off()
 			self.on = False
 		else:
-			self.light_bulb.turn_on()
+			self.switchable.turn_on()
 			self.on = True
 
 
 if __name__ == '__main__':
 	light_bulb: LightBulb = LightBulb() 
-	electric_power_switch: ElectricPowerSwitch = ElectricPowerSwitch(light_bulb=light_bulb) 
+	electric_power_switch: ElectricPowerSwitch = ElectricPowerSwitch(switchable=light_bulb)
 	electric_power_switch.press()
 	electric_power_switch.press()
 	electric_power_switch.press()
