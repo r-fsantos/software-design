@@ -14,11 +14,12 @@ class VehicleInfo:
 		self.catalogue_price: int = catalogue_price
 		self.electric: bool = electric
 
+	def compute_tax_percentage(self) -> float:
+		return 0.02 if self.electric else 0.05
+
 	def compute_tax(self) -> float:
-		tax_percentage: float = 0.05
-		if self.electric:
-			tax_percentage = 0.02
-		return tax_percentage * self.catalogue_price
+		tax_percentage: float = self.compute_tax_percentage()
+		return self.catalogue_price * tax_percentage
 
 	def print(self) -> None:
 		print(f"Brand: {self.brand}")
