@@ -4,7 +4,6 @@ Dev Notes: Practice of Software Quality Metrics related concepts
     - Coupling
 """
 
-import string
 import random
 
 
