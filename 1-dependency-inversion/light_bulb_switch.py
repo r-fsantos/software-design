@@ -5,6 +5,17 @@ Dev Notes: This file implements some code to practice
 	- Interfaces
 	- Dependency inversion
 """
+from abc import ABC, abstractmethod
+
+
+class Switchable(ABC):
+	@abstractmethod
+	def turn_on(self) -> None:
+		pass
+
+	@abstractmethod
+	def turn_off(self) -> None:
+		pass
 
 
 class LightBulb:
